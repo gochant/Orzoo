@@ -1,0 +1,11 @@
+﻿<script type="text/javascript">
+    var siteRoot = '@Url.Content("~/")';
+</script>
+@if (Html.IsDebug())
+{
+    <script data-main="app/main" src="~/app/assets/require.js"></script>
+}
+else
+{
+    <script data-main="release/main" src="~/release/assets/require.js"></script>
+}

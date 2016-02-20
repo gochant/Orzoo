@@ -1,0 +1,9 @@
+﻿@{
+    var action = ViewData["ActionName"];
+    var dataBind = $"text: data.{ViewData.ModelMetadata.PropertyName}, {ViewData["DataBind"]}";
+    var cls = ViewData["Class"];
+    var href = ViewData["Href"];
+}
+
+<a class="@(cls)" data-bind="@(dataBind)" data-action="@(action)" href="@(href)">
+</a>

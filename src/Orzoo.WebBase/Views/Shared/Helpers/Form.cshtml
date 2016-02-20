@@ -1,0 +1,42 @@
+﻿@* Generator: MvcHelper  Namespace: ASP  GeneratePrettyNames : true *@
+@functions
+{
+
+    public static string GetDataFormat(ModelMetadata metadata)
+    {
+        var dataFormat = string.Empty;
+
+
+        if (!string.IsNullOrEmpty(metadata.DisplayFormatString))
+        {
+            dataFormat = metadata.DisplayFormatString.Replace("{", "").Replace("}", "").Replace("0:", "");
+        }
+        else
+        {
+            if (metadata.DataTypeName == "Currency" || metadata.ModelType.Name == "Decimal")
+            {
+                dataFormat = "C";
+            }
+        }
+        return dataFormat;
+    }
+
+}
+
+@helper SecurityCheckBox(string chkClass = "attention", bool isChecked = false, string text = "关注", string role = null)
+{
+    // if (Helper.HasPermission(role))
+    if(true)
+    {
+        if (isChecked)
+        {
+            <input type="checkbox" checked="checked" class="@chkClass"/>
+            @text
+        }
+        else
+        {
+            <input type="checkbox" class="@chkClass"/>
+            @text
+        }
+    }
+}

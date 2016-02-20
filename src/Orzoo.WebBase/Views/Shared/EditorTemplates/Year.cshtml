@@ -1,0 +1,9 @@
+﻿@model int
+@Html.LabelFor(model => model, new {@class = "control-label"})
+
+<div class="input-group">
+    @Html.TextBoxFor(model => model, new {@class = "form-control"})
+    <span class="input-group-addon">年</span>
+</div>
+@Html.ValidationMessageFor(model => model)
+

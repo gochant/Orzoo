@@ -1,0 +1,100 @@
+﻿@* Generator: MvcHelper  Namespace: ASP  GeneratePrettyNames : true *@
+
+@helper ButtonForAttention(string id, bool isFollow, string role = null)
+{
+if (true)
+{
+    var btnText = isFollow ? "取消关注" : "关注";
+    var iconCls = isFollow ? "fa-eye-slash" : "fa-eye";
+
+        <a class="btn btn-default" data-action="attention" data-id="@(id)" data-isfollow="@(isFollow)">
+            <i class="fa @(iconCls)"></i>
+            @(btnText)
+        </a>
+}
+}
+
+@helper ButtonForNext(string btnClass = "btn-default", string action = "next", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "arrow-right", "下一步", role, hasText: hasText)
+}
+
+@helper ButtonForSave()
+{
+    @SecurityButton("btn-primary", "save", "save", "保存")
+}
+
+@helper ButtonForAdd(string btnClass = "btn-default", string action = "create", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "plus", "添加", role, hasText: hasText)
+}
+
+@helper ButtonForDelete(string btnClass = "btn-default", string action = "remove", string icon = null, string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, icon, "删除", role, hasText: hasText)
+}
+
+@helper ButtonForDetail(string btnClass = "btn-default", string action = "detail", string text = "", string icon = null, string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, icon, "详情", role, hasText: hasText)
+}
+
+@helper ButtonForRefresh(string btnClass = "btn-default", string action = "refresh", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "refresh", "刷新", role, hasText: hasText)
+}
+
+@helper ButtonForSearch(string btnClass = "btn-default", string action = "search", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "search", "查询", role, hasText: hasText)
+}
+
+@helper ButtonForDownload(string btnClass = "btn-default", string action = "download", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "download", "下载", role, hasText: hasText)
+}
+
+@helper ButtonForEdit(string btnClass = "btn-success", string action = "edit", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "edit", "编辑", role, hasText: hasText)
+}
+
+@helper ButtonForModify(string btnClass = "btn-default", string action = "modify", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "edit", "编辑", role, hasText: hasText)
+}
+
+@helper ButtonForClose(string btnClass = "btn-default", string action = "close", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "close", "关闭", role, hasText: hasText)
+}
+
+@helper ButtonForBack(string btnClass = "btn-default", string action = "back", string role = null, bool hasText = true)
+{
+    @SecurityButton(btnClass, action, "arrow-left", "返回", role, hasText: hasText)
+}
+
+@helper SecurityButton(string btnClass = "btn-default", string action = "", string icon = null, string text = "", string role = null, string title = "", bool hasText = true)
+{
+if (true)
+{
+    var className = "btn " + btnClass;
+    var iconClass = "";
+    var theTitle = hasText == false && string.IsNullOrEmpty(title) ? text : title;
+    if (!string.IsNullOrEmpty(icon))
+    {
+        iconClass = "fa fa-" + icon;
+    }
+
+    <a class="@className" title="@theTitle" data-action="@action">
+        @if (!string.IsNullOrEmpty(iconClass))
+        {
+            <i class="@iconClass"></i>
+        }
+        @if (hasText)
+        {
+            @text
+        }
+    </a>
+}
+}

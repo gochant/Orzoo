@@ -1,0 +1,2 @@
+﻿@Html.DropDownListFor(model => model, new SelectListItem[] {}, string.Empty,
+    new {@class = "form-control", multiple = "multiple", data_value_primitive = "true", data_value_field = "value", data_text_field = "name", data_bind = "source: " + ViewData.ModelMetadata.PropertyName + "List, value: data." + ViewData.ModelMetadata.PropertyName})

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="renderer" content="webkit"/>
+    <title>@ViewBag.Title</title>
+    @Html.Partial("Partials/_LayoutHeader")
+</head>
+<body class="admin admin-min no-padding">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar-content sidebar-content-inverse">
+            <div class="scrollbar-macosx">
+                @Html.Partial("Partials/_Logo")
+                @Html.Action("Menu", "Home")
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main main-fixed">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+<div id="glb_loading" style="display: none;">页面加载中...</div>
+@Html.Partial("Partials/_LayoutScript")
+@RenderSection("scripts", false)
+</body>
+</html>

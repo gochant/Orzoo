@@ -1,0 +1,13 @@
+﻿
+@{
+
+    var list = ViewData["List"] as List<SelectListItem>;
+}
+<div class="checkbox-group">
+    @foreach (var item in list)
+    {
+        <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: data.@(ViewData.ModelMetadata.PropertyName)" value="@(item.Value)"> @item.Text
+        </label>
+    }
+</div>

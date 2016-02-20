@@ -1,0 +1,11 @@
+﻿@{
+    var list = ViewData["List"] as List<SelectListItem>;
+    var selectedItem = list?.FirstOrDefault(d => d.Value == ViewData.TemplateInfo.FormattedModelValue?.ToString());
+    if (selectedItem != null)
+    {
+        selectedItem.Selected = true;
+    }
+}
+
+@Html.DropDownListFor(model => model, list,
+    new {@class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})

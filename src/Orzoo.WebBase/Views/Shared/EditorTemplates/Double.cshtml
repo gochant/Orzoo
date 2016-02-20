@@ -1,0 +1,3 @@
+﻿@model double?
+
+@Html.TextBoxFor(model => model, new {@class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName, onclick = "this.select()"})

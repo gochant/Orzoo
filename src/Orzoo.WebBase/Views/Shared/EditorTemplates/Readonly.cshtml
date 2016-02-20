@@ -1,0 +1,14 @@
+﻿@{
+    var typeName = ViewData.ModelMetadata.ModelType.Name;
+}
+@if (typeName == "Decimal")
+{
+    <div class="input-group">
+        @Html.TextBoxFor(model => model, new {@class = "form-control", @readonly = "readonly", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})
+        <div class="input-group-addon">元</div>
+    </div>
+}
+else
+{
+    @Html.TextBoxFor(model => model, new {@class = "form-control", @readonly = "readonly", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})
+}

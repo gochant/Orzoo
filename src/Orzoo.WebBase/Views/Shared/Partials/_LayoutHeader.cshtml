@@ -1,0 +1,16 @@
+﻿@if (Html.IsDebug())
+{
+    <link rel="stylesheet" href="~/app/styles/index.css"/>
+    <!--[if lte IE 8]>
+        <script src="/app/assets/respond/dest/respond.min.js"></script>
+        <script src="/app/assets/es5-shim.js"></script>
+    <![endif]-->
+}
+else
+{
+    <link rel="stylesheet" href="~/release/styles/index.css"/>
+    <!--[if lte IE 8]>
+        <script src="/release/assets/es5-shim.js"></script>
+        <script src="/release/assets/respond/dest/respond.min.js"></script>
+    <![endif]-->
+}

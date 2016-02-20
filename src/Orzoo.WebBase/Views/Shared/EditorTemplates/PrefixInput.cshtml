@@ -1,0 +1,14 @@
+﻿@{
+
+    TemplateHelper.RemoveModelFromVisitedObjects(ViewData);
+
+    var editorParams = ViewData["TemplateParams"] as TemplateParams ?? new TemplateParams();
+
+    var viewData = TypeHelper.ObjectToDictionary(editorParams.AdditionalViewData);
+
+    var prefixField = viewData["PrefixField"]?.ToString();
+}
+<div class="input-group">
+    <span class="input-group-addon" data-bind="text: data.@(prefixField)"></span>
+    @Html.TextBoxFor(m => m, new {@class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})
+</div>

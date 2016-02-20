@@ -1,0 +1,35 @@
+﻿@{
+
+    TemplateHelper.RemoveModelFromVisitedObjects(ViewData);
+
+    var templateParams = ViewData["TemplateParams"] as TemplateParams ?? new TemplateParams();
+
+    var labelClass = templateParams.GetAdditionalViewData("LabelClass");
+    var controlClass = templateParams.GetAdditionalViewData("ControlClass");
+    var controlTemplate = templateParams.GetAdditionalViewData("UIHint")?.ToString() ?? ViewData.ModelMetadata.TemplateHint;
+    //var dataBind = templateParams.GetAdditionalViewData("DataBind");
+
+    labelClass = labelClass + (ViewData.ModelMetadata.IsRequired ? " required" : "");
+}
+@if (controlTemplate == "Hidden")
+{
+    @Html.EditorFor(m => m, controlTemplate, templateParams.HtmlFieldName, templateParams.AdditionalViewData)
+}
+else
+{
+    if (templateParams.Features.Contains(TemplateFeature.GridLayout))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m, new {@class = labelClass, title = Html.DisplayNameFor(m => m)})
+
+            <div class="@(controlClass)">
+                @Html.EditorFor(m => m, controlTemplate, templateParams.HtmlFieldName, templateParams.AdditionalViewData)
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.LabelFor(m => m, new {@class = labelClass, title = Html.DisplayNameFor(m => m)})
+        @Html.EditorFor(m => m, controlTemplate, templateParams.HtmlFieldName, templateParams.AdditionalViewData)
+    }
+}

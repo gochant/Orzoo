@@ -1,0 +1,11 @@
+﻿@{
+
+    var list = ViewData["List"] as List<SelectListItem>;
+}
+
+@foreach (var item in list)
+{
+    <label class="radio-inline">
+        <input type="radio" data-bind="checked: data.@(ViewData.ModelMetadata.PropertyName)" value="@(item.Value)"> @item.Text
+    </label>
+}

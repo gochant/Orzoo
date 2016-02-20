@@ -1,0 +1,25 @@
+﻿@using System.ComponentModel
+@model object
+
+@{
+    Layout = "~/Views/Shared/Layouts/_FormDialogLayout.cshtml";
+
+    var title = Model.GetType().GetAttribute<DisplayNameAttribute>()?.DisplayName ?? string.Empty;
+}
+
+@section Footer
+{
+    @{
+        var editRole = ViewData["EditRole"]?.ToString();
+        var isDetail = Request.Params["state"] == "detail";
+    }
+    @(isDetail ? Btn.ButtonForEdit(role: editRole) : Btn.ButtonForSave())
+}
+
+<form class="p15 form-horizontal" data-title="@title">
+    @Html.AntiForgeryToken()
+    @foreach (var property in Model.GetType().GetProperties())
+    {
+        @Html.EditorSectionGridLayout(property.Name)
+    }
+</form>

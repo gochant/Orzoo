@@ -1,0 +1,154 @@
+﻿@* Generator: MvcHelper  Namespace: ASP  GeneratePrettyNames : true *@
+
+@helper Breadcrumb(List<SelectListItemDto> list, string actionName = "refresh")
+{
+    <ol class="breadcrumb no-margin" style="border-bottom: 1px solid #ddd; min-height: 26px;">
+        @for (var i = 0; i < list.Count; i++)
+        {
+            var item = list[i];
+            if (i == list.Count - 1)
+            {
+                <li data-value="@item.Value" data-data="@item.Text">@item.Text</li>
+            }
+            else
+            {
+                <li>
+                    <a href="#" data-action="@actionName" data-value="@item.Value" data-data="@item.Text">@item.Text</a>
+                </li>
+            }
+        }
+    </ol>
+}
+
+@helper MenuItem(MenuItem item)
+{
+    var hasChildren = item.Items.Count > 0;
+    var aClass = hasChildren ? "dropdown-toggle" : string.Empty;
+    // if (Helper.HasPermission(item.Role))
+    if(true)
+    {
+        <li class="menu-item">
+            <a href="@item.Url" class="@(aClass)">
+                @if (!string.IsNullOrEmpty(item.Icon))
+                {
+                    <i class="menu-icon fa fa-@(item.Icon)"></i>
+                }
+                <span class="menu-text">@item.Text</span>
+            </a>
+            @if (item.Items.Count > 0)
+            {
+                <ul class="submenu">
+                    @foreach (var subItem in item.Items)
+                    {
+                        @MenuItem(subItem)
+                    }
+                </ul>
+            }
+        </li>
+    }
+}
+@helper Menu(List<MenuItem> menu)
+{
+    <ul class="nav nav-list">
+        @foreach (var item in menu)
+        {
+            @MenuItem(item)
+        }
+    </ul>
+}
+
+@helper SiteMapMenuItem(ISiteMapNode node)
+{
+    var aClass = node.HasChildNodes ? "dropdown-toggle" : string.Empty;
+    var role = string.Join(",", node.Roles);
+    //if (Helper.HasPermission(role))
+    if(true)
+    {
+        <li class="menu-item">
+            <a href="@node.Url" class="@(aClass)" title="@(node.Description ?? node.Title)">
+                @if (!string.IsNullOrEmpty(node.ImageUrl))
+                {
+                    <i class="menu-icon fa fa-@(node.ImageUrl.Replace("/", ""))"></i>
+                }
+                <span class="menu-text">@node.Title</span>
+            </a>
+            @if (node.HasChildNodes)
+            {
+                <ul class="submenu">
+                    @foreach (var childNode in node.ChildNodes)
+                    {
+                        @SiteMapMenuItem(childNode)
+                    }
+                </ul>
+            }
+        </li>
+    }
+}
+@helper SiteMapMenu(ISiteMap sitemap)
+{
+    <ul class="nav nav-list">
+        @foreach (var node in sitemap.GetChildNodes(sitemap.RootNode))
+        {
+            @SiteMapMenuItem(node)
+        }
+    </ul>
+}
+
+@helper Tabs(List<MenuItem> items, int activeIndex = 0, List<int> noneIndexs = null)
+{
+    var rendered = false;
+    noneIndexs = noneIndexs ?? new List<int>();
+    <div class="tabbable">
+        <ul class="nav nav-tabs padding-14">
+            @for (var i = 0; i < items.Count; i++)
+            {
+                var item = items[i];
+                var itemCls = activeIndex == i ? "active" : "";
+                //var canRender = !noneIndexs.Contains(i) && Helper.HasPermission(item.Role);
+                var canRender = !noneIndexs.Contains(i) && true;
+                if (canRender && !rendered && activeIndex == 0)
+                {
+                    itemCls = "active";
+                }
+                if (canRender)
+                {
+                    rendered = true;
+                }
+                if (canRender)
+                {
+                    <li class="@(itemCls)">
+                        <a href="@(item.Url)" data-toggle="tab">@item.Text</a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+}
+
+@helper TabPanels(List<MenuItem> items, int activeIndex = 0, List<int> noneIndexs = null)
+{
+    var rendered = false;
+    noneIndexs = noneIndexs ?? new List<int>();
+    <div class="tab-content full-h">
+        @for (var i = 0; i < items.Count; i++)
+        {
+            var item = items[i];
+            var itemCls = activeIndex == i ? "active" : "";
+            //var canRender = !noneIndexs.Contains(i) && Helper.HasPermission(item.Role);
+            var canRender = !noneIndexs.Contains(i) && true;
+            if (canRender && !rendered && activeIndex == 0)
+            {
+                itemCls = "active";
+            }
+            if (canRender)
+            {
+                rendered = true;
+            }
+            if (canRender)
+            {
+                <div id="@(item.Url.Substring(1))" class="@(item.ClassName) @(itemCls) tab-pane in full-v">
+                </div>
+            }
+        }
+    </div>
+}

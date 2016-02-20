@@ -1,0 +1,15 @@
+﻿@{
+    var valueField = ViewData["ValueField"] ?? "Value";
+    var textField = ViewData["TextField"] ?? "Text";
+}
+
+@Html.DropDownListFor(model => model, new SelectListItem[] {}, string.Empty,
+    new
+    {
+        @class = "form-control",
+        data_value_primitive = "true",
+        data_value_field = valueField,
+        data_text_field = textField,
+        data_auto_bind = false,
+        data_bind = "source: " + ViewData.ModelMetadata.PropertyName + "List, value: data." + ViewData.ModelMetadata.PropertyName
+    })

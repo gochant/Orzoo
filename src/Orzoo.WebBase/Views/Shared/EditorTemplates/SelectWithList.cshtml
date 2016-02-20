@@ -1,0 +1,5 @@
+﻿@{
+    var list = ViewData["List"] as List<SelectListItem>;
+}
+
+@Html.DropDownListFor(model => model, list, string.Empty, new {@class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})

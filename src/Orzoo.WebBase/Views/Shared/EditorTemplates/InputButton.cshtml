@@ -1,0 +1,11 @@
+﻿<div class="input-group full">
+    @Html.TextBoxFor(model => model, new { @readonly = "readonly", @class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName })
+    @if (Request.Params["formstate"] != "detail")
+    {
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" data-action="@(ViewData["ActionName"] ?? $"select{ViewData.ModelMetadata.PropertyName}")">
+                <i class="fa fa-ellipsis-h"></i>
+            </button>
+        </span>
+    }
+</div>

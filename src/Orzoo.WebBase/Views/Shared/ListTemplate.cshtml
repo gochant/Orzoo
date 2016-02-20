@@ -1,0 +1,79 @@
+﻿@model object
+
+@{
+    Layout = "~/Views/Shared/Layouts/_MainPanelLayout.cshtml";
+
+    var properties = Model.GetType().GetProperties().Where(Orzoo.AspNet.Html.HtmlHelperExtensions.CanBeRendered).ToList();
+
+    var widthDictionary = new Dictionary<string, string>
+    {
+        {"Name", "200"},
+    };
+    var widths = $"[{string.Join(", ", properties.Select(p => widthDictionary.ContainsKey(p.Name) ? widthDictionary[p.Name] : string.Empty))}, 120]";
+}
+
+@{
+    var modelDisplay = Model.GetTypeDisplayName();
+    var modelName = Model.GetType().Name;
+    var tplNameLitHeader = $"tpl_{modelName}_index_list_header";
+    var tplNameListItem = $"tpl_{modelName}_index_list_item";
+}
+@section Title
+{
+    <i class="fa fa-bars"></i>
+    @modelDisplay
+}
+
+@section Toolbar
+{
+    @Btn.ButtonForRefresh(role: "")
+    @Btn.ButtonForAdd()
+}
+
+@section Footer
+{
+    <div data-role="pager" data-auto-bind="false" data-bind="source: source"></div>
+}
+
+@section Tpl
+{
+    <script type="text/template" id="@(tplNameLitHeader)">
+        <tr>
+
+            @foreach (var property in properties)
+            {
+                @Html.Th(property)
+            }
+            <th>
+                操作
+            </th>
+        </tr>
+    </script>
+    <script type="text/template" id="@(tplNameListItem)">
+        <tr data-id="#: Id #">
+            @foreach (var property in properties)
+            {
+                @Html.Td(property)
+            }
+            <td>
+                <div class="form-inline">
+                    <div class="form-group">
+                        @Btn.ButtonForDetail("btn-xs")
+                    </div>
+                    <div class="form-group">
+                        @Btn.ButtonForDelete("btn-xs", role: "")
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </script>
+}
+
+<div class="grow-inner">
+    <div data-role="datatable" class="datatable flexbox"
+         data-bind="source: source"
+         data-template="@(tplNameListItem)" data-header="@(tplNameLitHeader)"
+         data-widths='@widths'
+         data-table-cls="table-hover table-operator table-fixed">
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@{
+
+    TemplateHelper.RemoveModelFromVisitedObjects(ViewData);
+
+    var templateParams = ViewData["TemplateParams"] as TemplateParams ?? new TemplateParams();
+
+    //var dataBind = templateParams.GetAdditionalViewData("DataBind");
+    var controlTemplate = templateParams.GetAdditionalViewData("UIHint")?.ToString() ?? ViewData.ModelMetadata.TemplateHint;
+}
+@helper RenderDisplay(TemplateParams templateParams)
+{
+    var labelClass = templateParams.GetAdditionalViewData("LabelClass");
+    var controlClass = templateParams.GetAdditionalViewData("ControlClass");
+    var controlTemplate = templateParams.GetAdditionalViewData("UIHint")?.ToString() ?? ViewData.ModelMetadata.TemplateHint;
+    // 处理日期的赋值
+    var typeName = ValueHelper.GetJsType(ViewData.ModelMetadata.ModelType);
+    var valueField = typeName == "date" ? "date" : "text";
+
+    var addtionCls = controlTemplate == "Hidden" ? "hidden" : string.Empty;
+
+
+    if (controlTemplate != "Hidden")
+    {
+        @Html.LabelFor(m => m, new {@class = labelClass, title = Html.DisplayNameFor(m => m)})
+    }
+
+    if (templateParams.Features.Contains(TemplateFeature.DataBind))
+    {
+        var dataBind = controlTemplate == "Link" ? ""
+            : valueField + ": data." + ViewData.ModelMetadata.PropertyName + ", attr:{ title: data." + ViewData.ModelMetadata.PropertyName + "}";
+        <span class="@(controlClass) @(addtionCls)"
+                  data-type="@(typeName)"
+                  data-format="@(Form.GetDataFormat(ViewData.ModelMetadata))"
+                  data-bind="@(dataBind)">
+                @Html.DisplayFor(m => m, controlTemplate, templateParams.HtmlFieldName, templateParams.AdditionalViewData)
+            </span>
+    }
+    else
+    {
+        <span class="@(controlClass) @(addtionCls)">
+                @Html.DisplayFor(m => m, controlTemplate, templateParams.HtmlFieldName, templateParams.AdditionalViewData)
+            </span>
+    }
+}
+@if (templateParams.Features.Contains(TemplateFeature.GridLayout) && controlTemplate != "Hidden")
+{
+    <div class="form-group row">
+        @RenderDisplay(templateParams)
+    </div>
+}
+else
+{
+    @RenderDisplay(templateParams)
+}

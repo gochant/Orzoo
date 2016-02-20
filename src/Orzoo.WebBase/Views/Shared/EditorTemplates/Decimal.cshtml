@@ -1,0 +1,5 @@
+﻿@model decimal?
+<div class="input-group">
+    @Html.TextBoxFor(model => model, new {@class = "form-control", data_type = "number", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName, onclick = "this.select()"})
+    <div class="input-group-addon">元</div>
+</div>

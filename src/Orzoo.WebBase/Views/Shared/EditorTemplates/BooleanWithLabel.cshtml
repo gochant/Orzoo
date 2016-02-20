@@ -1,0 +1,6 @@
+﻿@model bool?
+<div class="checkbox checkbox-patch-label">
+    <label>
+        @Html.CheckBoxFor(m => m.Value, new {data_type = "boolean", data_bind = "checked: data." + ViewData.ModelMetadata.PropertyName})
+    </label>
+</div>

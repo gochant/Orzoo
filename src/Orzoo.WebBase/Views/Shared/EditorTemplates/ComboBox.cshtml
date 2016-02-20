@@ -1,0 +1,20 @@
+﻿@{
+    TemplateHelper.RemoveModelFromVisitedObjects(ViewData);
+    var uihint = ViewData.ModelMetadata.TemplateHint;
+    var valueField = ViewData["ValueField"] ?? "Value";
+    var textField = ViewData["TextField"] ?? "Text";
+}
+<div class="@(uihint?.ToLower())">
+    @Html.DropDownListFor(model => model, new SelectListItem[] {}, string.Empty,
+        new
+        {
+            @class = "form-control",
+            data_value_primitive = "true",
+            data_value_field = valueField,
+            data_text_field = textField,
+            data_bind = "source: " + ViewData.ModelMetadata.PropertyName + "List, value: data." + ViewData.ModelMetadata.PropertyName
+        })
+    <div class="input-container">
+        @Html.TextBoxFor(model => model, new {@class = "form-control", data_bind = "value: data." + ViewData.ModelMetadata.PropertyName})
+    </div>
+</div>
