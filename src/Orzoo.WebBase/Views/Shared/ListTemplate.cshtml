@@ -8,6 +8,8 @@
     var widthDictionary = new Dictionary<string, string>
     {
         {"Name", "200"},
+        {"Birth", "150" },
+        {"Email", "150" }
     };
     var widths = $"[{string.Join(", ", properties.Select(p => widthDictionary.ContainsKey(p.Name) ? widthDictionary[p.Name] : string.Empty))}, 120]";
 }

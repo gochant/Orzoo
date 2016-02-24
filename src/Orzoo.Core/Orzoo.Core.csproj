@@ -85,7 +85,7 @@
     <Compile Include="Linq\DataSourceRequest.cs" />
     <Compile Include="Linq\DataSourceResult.cs" />
     <Compile Include="Linq\Filter.cs" />
-    <Compile Include="Linq\KendoGroupResult.cs" />
+    <Compile Include="Linq\GroupResult.cs" />
     <Compile Include="Linq\QueryableExtensions.cs" />
     <Compile Include="Linq\Sort.cs" />
     <Compile Include="LogicException.cs" />

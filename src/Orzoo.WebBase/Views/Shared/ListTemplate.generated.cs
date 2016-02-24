@@ -27,6 +27,7 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
+    using MvcSiteMapProvider;
     using MvcSiteMapProvider.Web.Html;
     using MvcSiteMapProvider.Web.Html.Models;
     using Orzoo.AspNet.Extensions;
@@ -54,6 +55,8 @@ namespace ASP
     var widthDictionary = new Dictionary<string, string>
     {
         {"Name", "200"},
+        {"Birth", "150" },
+        {"Email", "150" }
     };
     var widths = $"[{string.Join(", ", properties.Select(p => widthDictionary.ContainsKey(p.Name) ? widthDictionary[p.Name] : string.Empty))}, 120]";
 
@@ -63,7 +66,7 @@ namespace ASP
 WriteLiteral("\r\n\r\n");
 
             
-            #line 15 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 17 "..\..\Views\Shared\ListTemplate.cshtml"
   
     var modelDisplay = Model.GetTypeDisplayName();
     var modelName = Model.GetType().Name;
@@ -86,7 +89,7 @@ WriteLiteral("></i>\r\n");
 WriteLiteral("    ");
 
             
-            #line 24 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 26 "..\..\Views\Shared\ListTemplate.cshtml"
 Write(modelDisplay);
 
             
@@ -105,7 +108,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 29 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 31 "..\..\Views\Shared\ListTemplate.cshtml"
 Write(Btn.ButtonForRefresh(role: ""));
 
             
@@ -116,7 +119,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 30 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 32 "..\..\Views\Shared\ListTemplate.cshtml"
 Write(Btn.ButtonForAdd());
 
             
@@ -150,26 +153,26 @@ WriteLiteral("\r\n    <script");
 
 WriteLiteral(" type=\"text/template\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1021), Tuple.Create("\"", 1045)
+WriteAttribute("id", Tuple.Create(" id=\"", 1076), Tuple.Create("\"", 1100)
             
-            #line 40 "..\..\Views\Shared\ListTemplate.cshtml"
-, Tuple.Create(Tuple.Create("", 1026), Tuple.Create<System.Object, System.Int32>(tplNameLitHeader
+            #line 42 "..\..\Views\Shared\ListTemplate.cshtml"
+, Tuple.Create(Tuple.Create("", 1081), Tuple.Create<System.Object, System.Int32>(tplNameLitHeader
             
             #line default
             #line hidden
-, 1026), false)
+, 1081), false)
 );
 
 WriteLiteral(">\r\n        <tr>\r\n\r\n");
 
             
-            #line 43 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 45 "..\..\Views\Shared\ListTemplate.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 43 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 45 "..\..\Views\Shared\ListTemplate.cshtml"
              foreach (var property in properties)
             {
                 
@@ -177,14 +180,14 @@ WriteLiteral(">\r\n        <tr>\r\n\r\n");
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 47 "..\..\Views\Shared\ListTemplate.cshtml"
            Write(Html.Th(property));
 
             
             #line default
             #line hidden
             
-            #line 45 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 47 "..\..\Views\Shared\ListTemplate.cshtml"
                                   
             }
 
@@ -196,26 +199,26 @@ WriteLiteral("            <th>\r\n                操作\r\n            </th>\r\
 
 WriteLiteral(" type=\"text/template\"");
 
-WriteAttribute("id", Tuple.Create(" id=\"", 1301), Tuple.Create("\"", 1324)
+WriteAttribute("id", Tuple.Create(" id=\"", 1356), Tuple.Create("\"", 1379)
             
-            #line 52 "..\..\Views\Shared\ListTemplate.cshtml"
-, Tuple.Create(Tuple.Create("", 1306), Tuple.Create<System.Object, System.Int32>(tplNameListItem
+            #line 54 "..\..\Views\Shared\ListTemplate.cshtml"
+, Tuple.Create(Tuple.Create("", 1361), Tuple.Create<System.Object, System.Int32>(tplNameListItem
             
             #line default
             #line hidden
-, 1306), false)
+, 1361), false)
 );
 
 WriteLiteral(">\r\n        <tr data-id=\"#: Id #\">\r\n");
 
             
-            #line 54 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 56 "..\..\Views\Shared\ListTemplate.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 56 "..\..\Views\Shared\ListTemplate.cshtml"
              foreach (var property in properties)
             {
                 
@@ -223,14 +226,14 @@ WriteLiteral(">\r\n        <tr data-id=\"#: Id #\">\r\n");
             #line default
             #line hidden
             
-            #line 56 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 58 "..\..\Views\Shared\ListTemplate.cshtml"
            Write(Html.Td(property));
 
             
             #line default
             #line hidden
             
-            #line 56 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 58 "..\..\Views\Shared\ListTemplate.cshtml"
                                   
             }
 
@@ -243,7 +246,7 @@ WriteLiteral("            <td>\r\n                <div class=\"form-inline\">\r\
 WriteLiteral("                        ");
 
             
-            #line 61 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 63 "..\..\Views\Shared\ListTemplate.cshtml"
                    Write(Btn.ButtonForDetail("btn-xs"));
 
             
@@ -254,7 +257,7 @@ WriteLiteral("\r\n                    </div>\r\n                    <div class=\
 WriteLiteral("                        ");
 
             
-            #line 64 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 66 "..\..\Views\Shared\ListTemplate.cshtml"
                    Write(Btn.ButtonForDelete("btn-xs", role: ""));
 
             
@@ -280,7 +283,7 @@ WriteLiteral("\r\n         data-bind=\"source: source\"");
 WriteLiteral("\r\n         data-template=\"");
 
             
-            #line 75 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 77 "..\..\Views\Shared\ListTemplate.cshtml"
                     Write(tplNameListItem);
 
             
@@ -291,7 +294,7 @@ WriteLiteral("\"");
 WriteLiteral(" data-header=\"");
 
             
-            #line 75 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 77 "..\..\Views\Shared\ListTemplate.cshtml"
                                                      Write(tplNameLitHeader);
 
             
@@ -302,7 +305,7 @@ WriteLiteral("\"");
 WriteLiteral("\r\n         data-widths=\'");
 
             
-            #line 76 "..\..\Views\Shared\ListTemplate.cshtml"
+            #line 78 "..\..\Views\Shared\ListTemplate.cshtml"
                  Write(widths);
 
             

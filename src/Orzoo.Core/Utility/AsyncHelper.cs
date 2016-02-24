@@ -8,9 +8,9 @@ namespace Orzoo.Core.Utility
     /// <summary>
     /// 异步代码同步执行帮助类
     /// </summary>
-    /// <see cref="//http://social.msdn.microsoft.com/Forums/en-US/163ef755-ff7b-4ea5-b226-bbe8ef5f4796/is-there-a-pattern-for-calling-an-async-method-synchronously?forum=async"/>
+    /// <see cref="http://social.msdn.microsoft.com/Forums/en-US/163ef755-ff7b-4ea5-b226-bbe8ef5f4796/is-there-a-pattern-for-calling-an-async-method-synchronously?forum=async"/>
     /// <see cref="https://gist.github.com/winkel/8333796"/>
-    public static class AsyncHelpers
+    public static class AsyncHelper
     {
         /// <summary>
         /// Execute's an async Task<T> method which has a void return value synchronously

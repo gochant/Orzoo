@@ -4,7 +4,7 @@ using System.Linq;
 namespace Orzoo.Core.Linq
 {
     /// <summary>
-    /// 用于 Kendo UI 的 DataSource 参数
+    /// 数据库查询参数
     /// </summary>
     public class AdvanceDataSourceRequest : DataSourceRequest
     {

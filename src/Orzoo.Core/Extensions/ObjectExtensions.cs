@@ -6,6 +6,14 @@ namespace Orzoo.Core.Extensions
 {
     public static class ObjectExtensions
     {
+        /// <summary>
+        /// 调用泛型方法（支持单个类型）
+        /// </summary>
+        /// <param name="obj">调用对象</param>
+        /// <param name="methodName">方法名</param>
+        /// <param name="t">类型</param>
+        /// <param name="parameters">方法参数</param>
+        /// <returns>方法的返回值</returns>
         public static object CallGenericMethod(this object obj, string methodName, Type t, object[] parameters = null)
         {
             var method = obj.GetType().GetMethods().FirstOrDefault(d => d.Name == methodName && d.IsGenericMethod);
@@ -113,7 +121,7 @@ namespace Orzoo.Core.Extensions
         }
 
         /// <summary>
-        /// 有bug
+        /// 去除对象中的所有null值（有bug）
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
