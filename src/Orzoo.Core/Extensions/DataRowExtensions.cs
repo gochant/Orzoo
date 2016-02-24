@@ -8,7 +8,6 @@ namespace Orzoo.Core.Extensions
         /// <summary>
         /// 根据列名获取数据行中单元格的值
         /// </summary>
-        /// <typeparam name="TValue">值的类型</typeparam>
         /// <param name="row">数据行</param>
         /// <param name="columnName">列名</param>
         /// <returns>特定类型的单元格值</returns>

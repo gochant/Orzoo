@@ -51,8 +51,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Extensions\DataRowExtensionsTest.cs" />
     <Compile Include="Extensions\EnumExtensionsTest.cs" />
+    <Compile Include="Linq\LinqDynamicTest.cs" />
+    <Compile Include="Linq\QueryableExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\AsyncHelperTest.cs" />
+    <Compile Include="Utility\EnumHelperTest.cs" />
+    <Compile Include="Utility\FileHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Orzoo.Core\Orzoo.Core.csproj">

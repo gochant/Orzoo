@@ -2,6 +2,9 @@
 {
     public class AsyncHelperTest
     {
-         
+         public void RunSync_call()
+        {
+
+        }
     }
 }
