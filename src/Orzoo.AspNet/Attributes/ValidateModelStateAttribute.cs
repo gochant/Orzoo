@@ -38,7 +38,7 @@ namespace Orzoo.AspNet.Attributes
 
         protected virtual void ProcessAjax(ActionExecutingContext filterContext)
         {
-            var result = Feedback.Fail(data: filterContext.Controller.ViewData.ModelState.GetAllErrors());
+            var result = Feedback.CreateFail(data: filterContext.Controller.ViewData.ModelState.GetAllErrors());
             // var json = JsonConvert.SerializeObject(result);
 
             filterContext.Result = new JsonNetResult()

@@ -25,7 +25,7 @@ namespace Orzoo.AspNet.Attributes
             {
                 filterContext.Result = new JsonNetResult
                 {
-                    Data = Feedback.Fail(data: Enum.GetName(typeof (AuthorizeState), state), type: AlertType.Silent),
+                    Data = Feedback.CreateFail(data: Enum.GetName(typeof (AuthorizeState), state), type: AlertType.Silent),
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
             }

@@ -24,7 +24,7 @@ namespace Orzoo.AspNet.Attributes
             if (ex is LogicException)
             {
                 var logicEx = (LogicException) ex;
-                feedback = Feedback.Fail(ex.Message, type: logicEx.Level);
+                feedback = Feedback.CreateFail(ex.Message, type: logicEx.Level);
             }
             else
             {
@@ -57,7 +57,7 @@ namespace Orzoo.AspNet.Attributes
                 // TODO: 处理非Ajax请求的情况
                 filterContext.Result = new ContentResult()
                 {
-                    Content = feedback.msg,
+                    Content = feedback.Msg,
                     ContentEncoding = Encoding.UTF8,
                     ContentType = "text/plain"
                 };

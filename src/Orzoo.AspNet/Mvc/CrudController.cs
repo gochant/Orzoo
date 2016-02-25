@@ -66,7 +66,7 @@ namespace Orzoo.AspNet.Mvc
         {
             var result = Service.GetListResult<TItemDto>(request, queryable);
 
-            return Json(Feedback.List(result.Data, result.Total), JsonRequestBehavior.AllowGet);
+            return Json(Feedback.CreateList(result.Data, result.Total), JsonRequestBehavior.AllowGet);
         }
 
 
@@ -173,7 +173,7 @@ namespace Orzoo.AspNet.Mvc
                 throw new LogicException("数据不存在");
             }
 
-            return Json(Feedback.Data(result, isNew.ToString()), JsonRequestBehavior.AllowGet);
+            return Json(Feedback.CreateData(result, isNew.ToString()), JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Orzoo.AspNet.Mvc
         public virtual ActionResult Entity(T data)
         {
             var result = Service.CreateEntity<TDto>(data);
-            return Json(Feedback.Data(data: result), JsonRequestBehavior.AllowGet);
+            return Json(Feedback.CreateData(data: result), JsonRequestBehavior.AllowGet);
         }
 
 

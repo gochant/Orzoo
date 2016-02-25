@@ -5,16 +5,20 @@ using System.Xml.Serialization;
 
 namespace Orzoo.Core
 {
-
+    /// <summary>
+    /// 映射配置
+    /// </summary>
+    /// <typeparam name="TK">键类型</typeparam>
+    /// <typeparam name="TV">值类型</typeparam>
     [Serializable]
     [XmlType(TypeName = "mapping")]
-    public class MappingConfig<K, V>
+    public class MappingConfig<TK, TV>
     {
         [XmlAttribute("key")]
-        public K Key { get; set; }
+        public TK Key { get; set; }
 
         [XmlAttribute("value")]
-        public V Value { get; set; }
+        public TV Value { get; set; }
     }
 
     [XmlType(TypeName = "mappings")]

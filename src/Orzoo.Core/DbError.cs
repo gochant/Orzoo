@@ -1,5 +1,8 @@
 namespace Orzoo.Core
 {
+    /// <summary>
+    /// Êý¾Ý¿â´íÎó
+    /// </summary>
     public class DbError : IDbError
     {
         /// <summary>

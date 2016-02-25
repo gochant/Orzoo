@@ -30,20 +30,20 @@ namespace Orzoo.AspNet.Logging
             var actionName = filterContext.GetActionName();
             var fb = filterContext.GetFeedback();
 
-            if (fb == null || !fb.success)
+            if (fb == null || !fb.Success)
             {
                 return;
             }
 
-            if (fb.temp.ContainsKey("activity"))
+            if (fb.Temp.ContainsKey("activity"))
             {
-                var activity = fb.temp["activity"] as UserActivity;
+                var activity = fb.Temp["activity"] as UserActivity;
                 UserActivityTracker.Record(activity);
             }
             else
             {
-                if (!fb.temp.ContainsKey("entity")) return;
-                var entity = fb.temp["entity"];
+                if (!fb.Temp.ContainsKey("entity")) return;
+                var entity = fb.Temp["entity"];
                 UserActivityTracker.Record(filterContext.Controller.ControllerContext, new BasicEntity
                 {
                     Id = entity.GetPropertyValue("Id")?.ToString(),

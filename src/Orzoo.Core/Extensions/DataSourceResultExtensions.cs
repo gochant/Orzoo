@@ -11,7 +11,7 @@ namespace Orzoo.Core.Extensions
         /// <returns></returns>
         public static Feedback ToFeedback(this DataSourceResult result)
         {
-            return Feedback.List(result.Data, result.Total);
+            return Feedback.CreateList(result.Data, result.Total);
         }
     }
 }

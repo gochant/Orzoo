@@ -15,12 +15,20 @@ namespace Orzoo.Core.Utility
 
         #region Public Methods
 
+        /// <summary>
+        /// 创建方法
+        /// </summary>
+        /// <param name="sourcecode">源代码</param>
+        /// <param name="genericType">如果是泛型方法，泛型类型</param>
+        /// <returns>方法元数据</returns>
         public static MethodInfo CreateFunction(string sourcecode, Type genericType = null)
         {
             var provider = new CSharpCodeProvider();
-            var parameters = new CompilerParameters();
-            parameters.GenerateInMemory = true;
-            parameters.GenerateExecutable = false;
+            var parameters = new CompilerParameters
+            {
+                GenerateInMemory = true,
+                GenerateExecutable = false
+            };
 
             // 将当前域的程序集添加到编译器中
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -56,6 +64,13 @@ namespace Orzoo.Core.Utility
             //increase = increaseFunction(data);
         }
 
+        /// <summary>
+        /// 创建强类型方法
+        /// </summary>
+        /// <typeparam name="T">方法</typeparam>
+        /// <param name="sourcecode">源代码</param>
+        /// <param name="genericType">泛型方法的类型</param>
+        /// <returns></returns>
         public static T CreateFunction<T>(string sourcecode, Type genericType = null)
         {
             var methodInfo = CreateFunction(sourcecode, genericType);
@@ -63,6 +78,11 @@ namespace Orzoo.Core.Utility
             return func;
         }
 
+        /// <summary>
+        /// Md5
+        /// </summary>
+        /// <param name="text">文本</param>
+        /// <returns>结果</returns>
         public static string Md5(string text)
         {
             byte[] encoded = new UTF8Encoding().GetBytes(text);
@@ -86,13 +106,6 @@ namespace Orzoo.Core.Utility
                 .Where(t => type.IsAssignableFrom(t) && type != t);
 
             return types;
-        }
-
-        public static object CallGenericMethod(object obj, string methodName, Type type, object[] parameters = null)
-        {
-            var method = obj.GetType().GetMethod(methodName);
-            var generic = method.MakeGenericMethod(type);
-            return generic.Invoke(obj, parameters);
         }
 
         #endregion

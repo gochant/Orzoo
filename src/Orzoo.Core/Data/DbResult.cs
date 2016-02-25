@@ -59,10 +59,10 @@ namespace Orzoo.Core.Data
         {
             if (Succeeded)
             {
-                return Feedback.Success();
+                return Feedback.CreateSuccess();
             }
             var errors = Errors.Select(d => new ViewError(d.Type + d.Code, d.Description));
-            return Feedback.Fail(data: errors);
+            return Feedback.CreateFail(data: errors);
         }
     }
 }

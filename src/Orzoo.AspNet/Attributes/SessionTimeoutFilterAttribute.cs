@@ -31,7 +31,7 @@ namespace Orzoo.AspNet.Attributes
                 {
                     JsonResult result = new JsonNetResult()
                     {
-                        Data = Feedback.Fail("会话过期", "SessionTimeout"),
+                        Data = Feedback.CreateFail("会话过期", "SessionTimeout"),
                         JsonRequestBehavior = JsonRequestBehavior.AllowGet
                     };
                     filterContext.Result = result;

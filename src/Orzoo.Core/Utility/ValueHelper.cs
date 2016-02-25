@@ -34,6 +34,11 @@ namespace Orzoo.Core.Utility
             return (value == null) ? default(T) : (T)Convert.ChangeType(value, t);
         }
 
+        /// <summary>
+        /// 获取类型的Js类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
         public static string GetJsType(Type type)
         {
             var typename = type.GetRealType()?.Name;

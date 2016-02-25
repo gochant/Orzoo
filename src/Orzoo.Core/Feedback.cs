@@ -1,72 +1,83 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Orzoo.Core
 {
+    /// <summary>
+    /// 反馈
+    /// </summary>
     public class Feedback
     {
         /// <summary>
         /// 是否成功
         /// </summary>
-        public bool success { get; set; }
+        [DataMember(Name = "success")]
+        public bool Success { get; set; }
 
         /// <summary>
         /// 数据
         /// </summary>
-        public object data { get; set; }
+        [DataMember(Name = "data")]
+        public object Data { get; set; }
 
         /// <summary>
         /// 临时数据
         /// </summary>
-        public Dictionary<string, object> temp { get; set; } = new Dictionary<string, object>();
+        [DataMember(Name = "temp")]
+        public Dictionary<string, object> Temp { get; set; } = new Dictionary<string, object>();
 
         /// <summary>
         /// 消息
         /// </summary>
-        public string msg { get; set; }
+        [DataMember(Name = "msg")]
+        public string Msg { get; set; }
 
         /// <summary>
         /// 消息类型
         /// </summary>
-        public AlertType type { get; set; } = AlertType.Silent;
+        [DataMember(Name = "type")]
+        public AlertType Type { get; set; } = AlertType.Silent;
 
         /// <summary>
         /// 数据总数量
         /// </summary>
-        public int total { get; set; }
+        [DataMember(Name = "total")]
+        public int Total { get; set; }
 
-        public object errors { get; set; }
+        [DataMember(Name = "errors")]
+        public object Errors { get; set; }
 
         public static Feedback Create(bool success, string msg, object data, AlertType type, int total = 0, object errors = null)
         {
             return new Feedback
             {
-                success = success,
-                msg = msg,
-                data = data,
-                type = type,
-                total = total,
-                errors = errors
+                Success = success,
+                Msg = msg,
+                Data = data,
+                Type = type,
+                Total = total,
+                Errors = errors
             };
         }
 
-        public static Feedback Data(object data = null, string msg = "", AlertType type = AlertType.Silent)
+        public static Feedback CreateData(object data = null, string msg = "", AlertType type = AlertType.Silent)
         {
             return Create(true, msg, data, type);
         }
 
-        public static Feedback Success(string msg = "操作成功", object data = null, AlertType type = AlertType.Success)
+        public static Feedback CreateSuccess(string msg = "操作成功", object data = null, AlertType type = AlertType.Success)
         {
             return Create(true, msg, data, type);
         }
 
-        public static Feedback Fail(string msg = "操作失败", object data = null, AlertType type = AlertType.Error)
+        public static Feedback CreateFail(string msg = "操作失败", object data = null, AlertType type = AlertType.Error)
         {
             data = data ?? "error";
             return Create(false, msg, data, type, 0, data);
         }
 
-        public static Feedback List(object data = null, int total = 0, AlertType type = AlertType.Silent)
+        public static Feedback CreateList(object data = null, int total = 0, AlertType type = AlertType.Silent)
         {
             return Create(true, string.Empty, data, type, total);
         }
@@ -99,7 +110,7 @@ namespace Orzoo.Core
 
         public static Feedback From(Exception ex)
         {
-            return Fail(@"系统出现未知异常，请联系管理员", ex.Message);
+            return CreateFail(@"系统出现未知异常，请联系管理员", ex.Message);
         }
     }
 

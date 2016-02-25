@@ -9,8 +9,14 @@ namespace Orzoo.Core
     [Serializable]
     public class LogicException : Exception
     {
+        /// <summary>
+        /// 异常等级
+        /// </summary>
         public virtual AlertType Level { get; set; }
 
+        /// <summary>
+        /// 异常的键
+        /// </summary>
         public string Key { get; set; }
 
         public LogicException() : base() { }

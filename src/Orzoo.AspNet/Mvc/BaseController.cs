@@ -60,7 +60,7 @@ namespace Orzoo.AspNet.Mvc
                 var feedback = result.Data as Feedback;
                 if (feedback != null)
                 {
-                    feedback.temp = null;
+                    feedback.Temp = null;
                     result.Data = feedback;
                     filterContext.Result = result;
                 }

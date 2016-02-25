@@ -5,14 +5,7 @@ using Orzoo.Core.Extensions;
 
 namespace Orzoo.Core.Tests.Extensions
 {
-    public enum TestEnum
-    {
-        [Display(Name = "测试")]
-        [System.ComponentModel.Description("描述 ")]
-        A,
 
-        B
-    }
 
     [TestClass]
     public class EnumExtensionsTest
