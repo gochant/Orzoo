@@ -6,6 +6,13 @@ namespace Orzoo.Core.Utility
 {
     public class XmlHelper
     {
+        public static T Load<T>(XDocument doc)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            var result = (T)serializer.Deserialize(doc.CreateReader());
+            return result;
+        }
+
         /// <summary>
         /// 加载XML文件
         /// </summary>
@@ -15,9 +22,7 @@ namespace Orzoo.Core.Utility
         public static T Load<T>(string path)
         {
             var doc = XDocument.Load(path);
-            var serializer = new XmlSerializer(typeof(T));
-            var result = (T)serializer.Deserialize(doc.CreateReader());
-            return result;
+            return Load<T>(doc);
         }
 
         /// <summary>
@@ -27,8 +32,14 @@ namespace Orzoo.Core.Utility
         /// <param name="path">保存路径</param>
         public static void SaveTo(object data, string path)
         {
+            var writer = File.CreateText(path);
+            SaveTo(data, writer);
+        }
+
+        public static void SaveTo(object data, StreamWriter writer)
+        {
             var serializer = new XmlSerializer(data.GetType());
-            serializer.Serialize(File.CreateText(path), data);
+            serializer.Serialize(writer, data);
         }
     }
 }

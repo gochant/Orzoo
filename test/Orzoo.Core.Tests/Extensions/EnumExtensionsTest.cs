@@ -15,7 +15,7 @@ namespace Orzoo.Core.Tests.Extensions
         {
             var em = TestEnum.A;
             var result = em.GetDisplay();
-            Assert.AreEqual("测试", result);
+            Assert.AreEqual("display", result);
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace Orzoo.Core.Tests.Extensions
         {
             var em = TestEnum.A;
             var result = em.GetDescription();
-            Assert.AreEqual("测试", result);
+            Assert.AreEqual("description", result);
         }
     }
 }

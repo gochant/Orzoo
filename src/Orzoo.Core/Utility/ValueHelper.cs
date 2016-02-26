@@ -14,17 +14,8 @@ namespace Orzoo.Core.Utility
         public static object GetSafeValue(object value, Type type)
         {
             var underlyingType = Nullable.GetUnderlyingType(type) ?? type;
-            var safeValue = (value == null) ? GetDefault(underlyingType) : Convert.ChangeType(value, underlyingType);
+            var safeValue = (value == null) ? underlyingType.GetDefault() : Convert.ChangeType(value, underlyingType);
             return safeValue;
-        }
-
-        public static object GetDefault(Type type)
-        {
-            if (type.IsValueType)
-            {
-                return Activator.CreateInstance(type);
-            }
-            return null;
         }
 
         public static T GetSafeValue<T>(object value)

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Orzoo.Core.Extensions;
 
 namespace Orzoo.Core.Extensions
 {
     public static class ObjectExtensions
     {
+
         /// <summary>
         /// 调用泛型方法（支持单个类型）
         /// </summary>
@@ -14,11 +16,12 @@ namespace Orzoo.Core.Extensions
         /// <param name="t">类型</param>
         /// <param name="parameters">方法参数</param>
         /// <returns>方法的返回值</returns>
-        public static object CallGenericMethod(this object obj, string methodName, Type t, object[] parameters = null)
+        public static object CallGenericMethod(this object obj, string methodName, Type t, params object[] parameters)
         {
             var method = obj.GetType().GetMethods().FirstOrDefault(d => d.Name == methodName && d.IsGenericMethod);
             var generic = method?.MakeGenericMethod(t);
-            return generic?.Invoke(obj, parameters);
+            var p = parameters.ToArray();
+            return generic?.Invoke(obj, p);
         }
 
         /// <summary>

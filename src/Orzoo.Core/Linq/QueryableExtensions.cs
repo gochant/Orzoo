@@ -21,9 +21,14 @@ namespace Orzoo.Core.Linq
         /// <returns></returns>
         public static IQueryable<T> ValidFilter<T>(this IQueryable<T> queryable) where T : class
         {
-            return queryable.Cast<IFlagEntity>()
+            if (typeof(IFlagEntity).IsAssignableFrom(typeof(T)))
+            {
+                return queryable.Cast<IFlagEntity>()
                 .Where(d => !d.Flag.HasValue || d.Flag.Value == DataFlag.Valid)
                 .Cast<T>();
+            }
+
+            return queryable;
         }
 
         /// <summary>
@@ -32,9 +37,13 @@ namespace Orzoo.Core.Linq
         /// <typeparam name="T"></typeparam>
         /// <param name="queryable"></param>
         /// <returns></returns>
-        public static IQueryable<T> DateOrder<T>(this IQueryable<T> queryable) where T : class, IMetadataEntity
+        public static IQueryable<T> DateOrder<T>(this IQueryable<T> queryable) where T : class
         {
-            return queryable.OrderByDescending(d => d.CreatedDate);
+            if (typeof(IMetadataEntity).IsAssignableFrom(typeof(T)))
+            {
+                return queryable.Cast<IMetadataEntity>().DateOrderStandard().Cast<T>(); // 默认按照创建时间降序排列
+            }
+            return queryable;
         }
 
         public static IQueryable<IMetadataEntity> DateOrderStandard(this IQueryable<IMetadataEntity> queryable)

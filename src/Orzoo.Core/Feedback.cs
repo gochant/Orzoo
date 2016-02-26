@@ -66,13 +66,17 @@ namespace Orzoo.Core
             return Create(true, msg, data, type);
         }
 
-        public static Feedback CreateSuccess(string msg = "操作成功", object data = null, AlertType type = AlertType.Success)
+        public static Feedback CreateSuccess(string msg = null, object data = null, AlertType type = AlertType.Success)
         {
+            msg = msg ?? Properties.Resources.OperationSuccessful;
             return Create(true, msg, data, type);
         }
 
-        public static Feedback CreateFail(string msg = "操作失败", object data = null, AlertType type = AlertType.Error)
+        public static Feedback CreateFail(string msg = null, object data = null, AlertType type = AlertType.Error)
         {
+
+            msg = msg ?? Properties.Resources.OperationFailed;
+
             data = data ?? "error";
             return Create(false, msg, data, type, 0, data);
         }
@@ -110,12 +114,7 @@ namespace Orzoo.Core
 
         public static Feedback From(Exception ex)
         {
-            return CreateFail(@"系统出现未知异常，请联系管理员", ex.Message);
+            return CreateFail(Properties.Resources.UnknownException, ex.Message);
         }
-    }
-
-    public class Message
-    {
-        public static string NotFoundData = "未找到该数据";
     }
 }

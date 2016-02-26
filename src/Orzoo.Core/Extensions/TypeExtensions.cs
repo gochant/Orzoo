@@ -29,7 +29,7 @@ namespace Orzoo.Core.Extensions
         public static T GetAttribute<T>(this Type type) where T : class
         {
             var o = type.GetCustomAttributes(typeof(T), false).FirstOrDefault();
-            return (T) o;
+            return (T)o;
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace Orzoo.Core.Extensions
         /// <returns></returns>
         public static string GetPropertyDisplayName(this Type type, string propertyName)
         {
-            var attributes = (DisplayAttribute[])type.GetProperty(propertyName)
+            var attributes = (DisplayAttribute[])type.GetProperty(propertyName)?
                 .GetCustomAttributes(typeof(DisplayAttribute), false);
-            return attributes.Length == 1 ? attributes[0].Name : type.Name;
+            return attributes?.Length == 1 ? attributes[0].Name : null;
         }
 
         /// <summary>
@@ -57,6 +57,54 @@ namespace Orzoo.Core.Extensions
             var propertyType = underlyingType ?? type;
 
             return propertyType;
+        }
+
+        /// <summary>
+        /// 获取类型的Js类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        public static string GetJsType(this Type type)
+        {
+            var typename = type.GetRealType()?.Name;
+            var jsTypes = new[] { "string", "date", "number", "boolean", "array", "object" };
+            var index = 0;
+            switch (typename)
+            {
+                case "String":
+                    index = 0;
+                    break;
+                case "DateTime":
+                    index = 1;
+                    break;
+                case "Double":
+                case "Int32":
+                case "Decimal":
+                case "Float":
+                    index = 2;
+                    break;
+                case "Boolean":
+                    index = 3;
+                    break;
+                default:
+                    index = 5;
+                    break;
+            }
+            return jsTypes[index];
+        }
+
+        /// <summary>
+        /// 获取类型的默认值
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static object GetDefault(this Type type)
+        {
+            if (type.IsValueType)
+            {
+                return Activator.CreateInstance(type);
+            }
+            return null;
         }
     }
 }

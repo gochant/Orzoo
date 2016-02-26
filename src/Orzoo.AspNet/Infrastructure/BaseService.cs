@@ -124,24 +124,16 @@ namespace Orzoo.AspNet.Infrastructure
             if (queryable == null)
             {
                 queryable = noTracking ? DbEntitySet.AsNoTracking() : DbEntitySet;
-                if (typeof (IFlagEntity).IsAssignableFrom(typeof (T)))
-                {
-                    queryable = queryable.ValidFilter();
-                }
+
+                queryable = queryable.ValidFilter();
 
                 if (sorted)
                 {
-                    if (typeof (IMetadataEntity).IsAssignableFrom(typeof (T)))
-                    {
-                        queryable = queryable.Cast<IMetadataEntity>().DateOrderStandard().Cast<T>(); // 默认按照创建时间降序排列
-                    }
-                    else
-                    {
-                        // 默认按照Id排序
-                        queryable = queryable.OrderBy(d => d.Id);
-                    }
+                    queryable = typeof(IMetadataEntity).IsAssignableFrom(typeof(T))
+                        ? queryable.DateOrder() : queryable.OrderBy(d => d.Id);
                 }
             }
+
             return queryable;
         }
 
@@ -165,7 +157,7 @@ namespace Orzoo.AspNet.Infrastructure
             where TEntityDto : class, IMapEntity
         {
             var result = queryable.ProjectTo<TEntityDto>().ToDataSourceResult(request);
-            result.Data = ProcessListResult<TEntity, TEntityDto>((IEnumerable<TEntityDto>) result.Data);
+            result.Data = ProcessListResult<TEntity, TEntityDto>((IEnumerable<TEntityDto>)result.Data);
 
             if (request.Fields.Count > 0)
             {
@@ -202,7 +194,7 @@ namespace Orzoo.AspNet.Infrastructure
         {
             if (dto != null)
             {
-                ((IMapEntity) dto).AfterMap<TEntity>();
+                ((IMapEntity)dto).AfterMap<TEntity>();
             }
 
             return dto;
@@ -337,7 +329,7 @@ namespace Orzoo.AspNet.Infrastructure
         public virtual async Task<DbResult> UpdateFlagAsync(TKey id, DataFlag flag)
         {
             var item = await GetByIdAsync(id);
-            if (typeof (IFlagEntity).IsAssignableFrom(typeof (T)))
+            if (typeof(IFlagEntity).IsAssignableFrom(typeof(T)))
             {
                 ((IFlagEntity)item).Flag = flag;
             }
@@ -366,7 +358,7 @@ namespace Orzoo.AspNet.Infrastructure
                 Context.Entry(entity).State = EntityState.Modified;
                 return save ? await SaveChangesAsync() : null;
             }
-            return DbResult.NullFailed(typeof (T).GetDisplayName());
+            return DbResult.NullFailed(typeof(T).GetDisplayName());
         }
 
         public DbResult SaveChanges()

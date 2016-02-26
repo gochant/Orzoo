@@ -10,8 +10,9 @@ namespace Orzoo.Core.Tests.Utility
     public class FileHandlerTest
     {
 
-         public void GetFileContent_call()
-         {
+        [TestMethod]
+        public void GetFileContent_call()
+        {
             using (ShimsContext.Create())
             {
                 ShimFile.ExistsString = (path) => true;

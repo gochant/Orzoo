@@ -15,7 +15,7 @@ namespace Orzoo.Core.Tests.Utility
         {
             var r = EnumHelper.GetDisplays<TestEnum>();
             Assert.AreEqual(2, r.Count);
-            Assert.AreEqual("测试", r[0]);
+            Assert.AreEqual("display", r[0]);
             Assert.AreEqual("B", r[1]);
         }
 
@@ -24,7 +24,7 @@ namespace Orzoo.Core.Tests.Utility
         {
             var r = EnumHelper.GetDescriptions<TestEnum>();
             Assert.AreEqual(2, r.Count);
-            Assert.AreEqual("描述", r[0]);
+            Assert.AreEqual("description", r[0]);
             Assert.AreEqual(null, r[1]);
         }
 
