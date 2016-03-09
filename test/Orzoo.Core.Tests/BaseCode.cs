@@ -12,6 +12,22 @@ namespace Orzoo.Core.Tests
         B
     }
 
+    public class A
+    {
+        public A()
+        {
+
+        }
+    }
+
+    public class B : A
+    {
+        public B(string name)
+        {
+
+        }
+    }
+
     [DisplayName("Test Class")]
     public class TestClass
     {

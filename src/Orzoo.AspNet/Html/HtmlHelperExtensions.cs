@@ -20,6 +20,11 @@ namespace Orzoo.AspNet.Html
 
         #region Public Methods
 
+        /// <summary>
+        /// 设置默认参数
+        /// </summary>
+        /// <param name="tplParams">模板参数</param>
+        /// <param name="templateName">模板名称</param>
         public static void SetDefaultOptions(this TemplateParams tplParams, string templateName = "EditorSection")
         {
             tplParams.TemplateName = tplParams.TemplateName ?? templateName;

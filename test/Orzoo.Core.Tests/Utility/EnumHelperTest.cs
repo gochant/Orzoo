@@ -13,6 +13,7 @@ namespace Orzoo.Core.Tests.Utility
         [TestMethod]
         public void GetDisplays_call()
         {
+            var a = new B("xxx");
             var r = EnumHelper.GetDisplays<TestEnum>();
             Assert.AreEqual(2, r.Count);
             Assert.AreEqual("display", r[0]);

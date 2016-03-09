@@ -25,7 +25,7 @@ namespace Orzoo.AspNet.Attributes
             {
                 filterContext.Result = new JsonNetResult
                 {
-                    Data = Feedback.CreateFail(data: Enum.GetName(typeof (AuthorizeState), state), type: AlertType.Silent),
+                    Data = Feedback.CreateFail(data: Enum.GetName(typeof(AuthorizeState), state), type: AlertType.Silent),
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
             }
@@ -39,7 +39,7 @@ namespace Orzoo.AspNet.Attributes
                 {
                     if (state == AuthorizeState.Unauthorized)
                     {
-                        filterContext.Result = new ContentResult() {Content = "Unauthorized!!"};
+                        filterContext.Result = new ContentResult() { Content = "Unauthorized!!" };
                     }
                 }
             }
