@@ -12,6 +12,20 @@ namespace Orzoo.Core.Linq
 {
     public static class QueryableExtensions
     {
+        public static IQueryable<T> PredicateFilter<T>(this IQueryable<T> queryable, DynamicLinqFilterParameter filterArgs)
+        {
+            if (filterArgs != null && filterArgs.Predicates.Count > 0)
+            {
+                var predicate = filterArgs.GetCombinedPredicate();
+
+                if (!string.IsNullOrEmpty(predicate))
+                {
+                    queryable = queryable.Where(predicate, filterArgs.GetCombinedArgs());
+                }
+            }
+
+            return queryable;
+        }
 
         /// <summary>
         /// 有效数据筛选
