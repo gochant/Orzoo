@@ -84,6 +84,7 @@
     <Compile Include="Linq\Aggregate.cs" />
     <Compile Include="Linq\DataSourceRequest.cs" />
     <Compile Include="Linq\DataSourceResult.cs" />
+    <Compile Include="Linq\DynamicLinqFilterParameter.cs" />
     <Compile Include="Linq\Filter.cs" />
     <Compile Include="Linq\GroupResult.cs" />
     <Compile Include="Linq\QueryableExtensions.cs" />
@@ -123,6 +124,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Linq\Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
