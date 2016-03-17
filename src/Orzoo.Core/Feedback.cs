@@ -7,6 +7,7 @@ namespace Orzoo.Core
     /// <summary>
     /// 反馈
     /// </summary>
+    [DataContract]
     public class Feedback
     {
         /// <summary>

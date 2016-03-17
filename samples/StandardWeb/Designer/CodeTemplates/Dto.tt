@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ output extension="cs" encoding="utf-8" #>
+<#@ include file="Includes/Variables.ttinclude" #>
+<#
+var outputPath = codeConfig.ResolvePath(codeConfig.DtoPath);
+
+foreach (var parameter in container.GetDtoParameters())
+{
+#>
+namespace <#= dtoNamespace #>
+{
+	using System;
+	using System.ComponentModel;
+	using System.ComponentModel.DataAnnotations;
+	using Orzoo.Core.Data;
+
+    /// <summary>
+    /// <#= parameter.Display ?? parameter.Name #>
+    /// </summary>
+	[DisplayName("<#= parameter.Display #>")]
+    public partial class <#= parameter.Name #> : <#= parameter.Inheritance #>, IEntity<<#= parameter.EntityKeyType #>>
+    {
+<#
+		foreach (var property in parameter.Properties) { 
+#>
+        /// <summary>
+		/// <#= property.Display ?? property.Name #>
+		/// </summary>
+<#
+		foreach (var annotation in property.Annotations) 
+		{
+#>
+		<#= annotation #>
+<#
+		}
+#>
+		<#= property.Accessibility #> <#= property.Type #> <#= property.Name #> { get; set; }
+<# 
+		if(!string.IsNullOrEmpty(property.DefaultValue)) 
+		{ 
+#>
+		= <#= property.DefaultValue #>;
+<#
+		 }
+#>
+<# 
+		}
+#>
+    }
+}
+
+<#
+}
+//fileManager.Process(true, outputPath);
+#>

@@ -11,7 +11,7 @@ namespace Orzoo.AspNet.Infrastructure
         public IMappingExpression<TSrc, TDest> AddMap<TSrc, TDest>(Func<IMappingExpression<TSrc, TDest>, IMappingExpression<TSrc, TDest>> func = null)
         {
             var map = Mapper.CreateMap<TSrc, TDest>();
-            if(func != null)
+            if (func != null)
             {
                 map = func(map);
             }
@@ -23,7 +23,7 @@ namespace Orzoo.AspNet.Infrastructure
 
         protected string GetMapKey<TSrc, TDest>()
         {
-           return typeof (TSrc).FullName + typeof (TDest).FullName;
+            return typeof(TSrc).FullName + typeof(TDest).FullName;
         }
 
         public IMappingExpression<TSrc, TDest> GetMap<TSrc, TDest>()

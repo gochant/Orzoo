@@ -1,0 +1,13 @@
+<#@ include file="VerGen.ttinclude"#>
+<#
+
+var codeConfig = new CodeConfig(this.Host);
+codeConfig.BmxRelativePath = "..\\BM.bmx";
+codeConfig.EdmxRelativePath = "..\\ER.edmx";
+codeConfig.DtoPath = "Models\\DTO";
+codeConfig.EntityPath = "Models\\PO";
+codeConfig.ControllerPath = "Controllers";
+codeConfig.ServicePath = "Services";
+codeConfig.MapProfilePath = "Models\\Maps";
+
+#>

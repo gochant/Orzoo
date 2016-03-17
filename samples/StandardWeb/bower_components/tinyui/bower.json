@@ -1,0 +1,48 @@
+{
+  "name": "tinyui",
+  "version": "0.1.0",
+  "authors": [
+    "channing<guochant@gmail.com>"
+  ],
+  "description": "Theme and template for Bootstrap",
+  "keywords": [
+    "tiny",
+    "tinyui",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "homepage": "http://gochant.github.io/tinyui",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "site",
+    "src",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.x",
+    "html5shiv": "latest",
+    "respond": "latest"
+  },
+  "devDependencies": {
+    "kss-node-template-tiny": "^0.1.0",
+    "requirejs-text": "latest",
+    "require-css": "latest",
+    "smalot-bootstrap-datetimepicker": "latest",
+    "jquery.inputmask": "latest",
+    "jquery-validation": "latest",
+    "jquery-validation-unobtrusive": "latest",
+    "noty": "latest",
+    "jquery-placeholder": "latest",
+    "jquery.scrollbar": "latest",
+    "jstree-bootstrap-theme": "latest",
+    "jquery.layout": "latest",
+    "jquery-file-upload": "latest",
+    "typeahead.js": "latest",
+    "font-awesome": "latest",
+    "jquery-validation-bootstrap-tooltip": "latest",
+    "select2-bootstrap-css": "latest"
+  }
+}

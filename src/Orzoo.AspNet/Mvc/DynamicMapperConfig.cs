@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
+using Orzoo.AspNet.Infrastructure;
 using Orzoo.Core.Extensions;
 using Orzoo.Core.Utility;
 
@@ -12,13 +14,13 @@ namespace Orzoo.AspNet.Mvc
 
         public static void Configure()
         {
-            Mapper.Initialize(cfg =>
+            new MapperConfiguration(cfg =>
             {
-                var types = RuntimeHelper.GetCurrentDomainImplementTypes(typeof (Profile));
+                var types = RuntimeHelper.GetCurrentDomainImplementTypes(typeof(MapProfile));
 
                 foreach (var type in types)
                 {
-                    cfg.CallGenericMethod(nameof(cfg.AddProfile), type);
+                    cfg.AddProfile((Profile)Activator.CreateInstance(type));
                 }
             });
         }

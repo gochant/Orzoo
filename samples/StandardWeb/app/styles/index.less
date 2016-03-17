@@ -1,0 +1,664 @@
+﻿@import "variables";
+@framePath: "../../bower_components/";
+
+@import (less) "@{framePath}tinyui/dist/css/bootstrap.css";
+/*@import (less) "bootstrap-theme.css";*/
+
+@import (less) "@{framePath}font-awesome/css/font-awesome.css";
+@import (less) "@{framePath}tinyui/dist/css/tiny.css";
+
+
+/*@import "@{framePath}select2/select2.css";*/
+
+@import (less) "@{framePath}smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css";
+
+@primary-color: #00a65a;
+
+.k-loading,
+.k-state-hover .k-loading {
+  background-image: url('img/loading.gif');
+  background-position: 50% 50%;
+}
+.k-loading-image {
+  background-image: url('img/loading-image.gif');
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+body.admin .sidebar-content.sidebar-content-inverse {
+    border-right: 1px solid @primary-color;
+    background-color: #4F4F4F;
+
+    .sidebar-min.sidebar .nav-list > li {
+        left: 2px;
+
+        > a {
+            color: white;
+
+            &:hover {
+                color: inherit;
+            }
+        }
+
+        &.active,
+        &:hover {
+            background: #fff;
+
+            > a {
+                color: inherit;
+            }
+        }
+    }
+
+    .nav .open > a {
+        background: transparent;
+    }
+}
+
+/*.sidebar.sidebar-min .nav-list {
+    > li:hover,
+    > li.open {
+        a > .menu-icon {
+            color: #444;
+            background: #eee;
+        }
+    }
+}*/
+
+.v-render-body {
+    height: 100%;
+}
+
+.flexbox .datatable-content.grow {
+    overflow-y: scroll;
+}
+
+.flexbox .grow.overflow-visible {
+    overflow: visible;
+}
+
+.w250 {
+    width: 250px;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ellipsis-block {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.bt0 {
+    border-top: 0 !important;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.td-bg {
+    background-color: #555 !important;
+    color: white;
+}
+
+.edit-display-bg {
+    background-color: #eee;
+}
+
+.display-bg {
+    background: #f9f9f9;
+}
+
+.down-load-file-result {
+    padding: 5px;
+}
+
+td.cursor:hover {
+    background: #555;
+    color: white;
+}
+
+.dropdown-menu-patch {
+    min-width: 139px !important;
+}
+
+.checkbox-patch {
+    label {
+        padding-left: 30px !important;
+    }
+
+    line-height: 15px !important;
+}
+
+.checkbox-patch-label {
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+}
+
+.bd0 {
+    border: none !important;
+}
+
+.mr1 {
+    margin-right: 10px !important;
+}
+
+.mt1 {
+    margin-top: 10px !important;
+}
+
+.mb0 {
+    margin-bottom: 0 !important;
+}
+
+.pt0 {
+    padding-top: 0 !important;
+}
+
+.autoscroll {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.normal-font-size {
+    font-size: 12px;
+}
+
+
+.header-fixed {
+    width: 100%;
+
+    > thead,
+    > tbody,
+    > thead > tr,
+    > tbody > tr,
+    > thead > tr > th,
+    > tbody > tr > td {
+        display: block;
+    }
+
+    > tbody > tr:after,
+    > thead > tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    > tbody {
+        overflow-y: auto;
+        height: 150px;
+    }
+
+    > tbody > tr > td,
+    > thead > tr > th {
+        width: 7.69%;
+        float: left;
+    }
+}
+
+// 进行 fixed 定位的 table
+.table-fixed {
+    table-layout: fixed;
+    overflow-y: scroll;
+
+    tbody {
+        overflow-y: scroll;
+    }
+}
+
+.logo:focus {
+    text-decoration: none;
+}
+
+.login-logo {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.sidebar-content .logo-mini {
+    font-size: 21px;
+    margin-right: -1px;
+}
+
+body.admin .sidebar-content {
+    background-color: #ECFFEC;
+}
+
+.sidebar-min.sidebar .nav-list > li {
+    margin: 15px 0;
+
+    > a > .menu-icon {
+        font-size: 16px;
+    }
+}
+
+.sidebar.sidebar-min .nav-list > li > a > .menu-icon {
+    border-color: transparent;
+}
+
+.big2x {
+    font-size: 2em;
+}
+
+
+.icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .item {
+        color: #999;
+        min-width: 33%;
+
+        &:hover {
+            color: #333;
+        }
+    }
+}
+
+// bug fixed
+
+.table > tbody > tr.k-state-selected {
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+// common a:hover
+a:hover {
+    text-decoration: none;
+}
+
+
+// 本系统自定义主题样式
+
+.sidebar.sidebar-min .nav-list > li:hover > .arrow {
+    display: none;
+}
+
+.datatable-header {
+    background: transparent;
+}
+
+.btn-transparent {
+    padding: 0 5px;
+    background: transparent;
+    color: #d9534f;
+    border-color: transparent;
+}
+
+.table-form.table {
+    & > tbody > tr > td {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+    }
+}
+
+.table-form-horizontal.static td .control-label {
+    color: #999;
+}
+
+
+.sidebar .nav-list li.active > a > .menu-text {
+    font-weight: bold;
+}
+
+.msg-nodata {
+    min-height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+
+.checkbox-group {
+    padding: @padding-base-vertical @padding-base-horizontal;
+}
+
+
+
+.k-pager-wrap .k-pager-numbers li > a {
+    display: inline-block;
+    padding: 0 10px;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background: #C6C6C6;
+        border-bottom: 2px solid #C6C6C6;
+    }
+}
+
+.k-pager-wrap .k-pager-numbers li span {
+    padding: 0 10px;
+    display: inline-block;
+    background-color: transparent;
+    border-bottom: 2px solid #428bca;
+    color: #428bca;
+}
+
+.panel.panel-underline > .panel-heading {
+    border-bottom: 2px solid @primary-color;
+}
+
+.tr-group {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-hover > tbody > tr.tr-group:hover {
+    background-color: #f5f5f5;
+}
+
+// 带操作的列表
+.table-hover > tbody > tr.k-master-row {
+    border-left: 2px solid transparent;
+
+    &:hover {
+        border-left-color: @primary-color;
+    }
+}
+
+.table.table-operator {
+
+    > tbody > tr > td {
+
+        &.ellipsis {
+            line-height: 22px;
+        }
+
+        &.operator-td {
+            line-height: 20px;
+        }
+
+        &.k-hierarchy-cell {
+            padding-left: 5px;
+            padding-top: 8px;
+        }
+
+        &.td-operator {
+            padding: 0;
+
+            .btn {
+                visibility: hidden;
+                line-height: 30px;
+                padding: 0 8px;
+                height: 32px;
+                display: inline-block;
+            }
+        }
+    }
+
+    > tbody > tr:hover {
+        > td.td-operator .btn {
+            visibility: visible;
+        }
+    }
+}
+
+
+
+.table > thead > tr > th {
+    /*background-color: #eee;*/
+}
+
+.k-master-row > td:first-child {
+    padding-left: 20px;
+}
+
+.grow-inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+//添加表格自适应属性
+.table-fixd {
+    table-layout: fixed;
+
+    td {
+        word-break: break-all;
+    }
+}
+
+.combobox {
+    position: relative;
+
+    > .input-container {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        left: 0;
+    }
+}
+
+.pos-rel {
+    position: relative !important;
+}
+// 选择大区（行政区划）-样式
+.choose_zone {
+    position: absolute;
+    top: 12px;
+    left: 70px;
+}
+// 项目详情-内容页默认高度
+.default-h300 {
+    height: 300px;
+}
+
+.default-h250 {
+    height: 250px;
+}
+
+.full-h {
+    height: 100%;
+}
+
+.full-ovy-h {
+    height: 100%;
+    overflow-y: hidden;
+}
+// 行政区域和大区关联
+.customer-checkbox-patch {
+    padding-left: 8px;
+
+    a {
+        color: #555;
+        text-decoration: none;
+    }
+}
+// 表格-a超链接样式
+.a-operator {
+    padding: 0 !important;
+}
+
+.ta-r {
+    text-align: right;
+}
+
+.tr-bg {
+    color: #31708f !important;
+    background-color: #d9edf7 !important;
+    border-color: #bce8f1 !important;
+}
+
+.pl5 {
+    padding-left: 5px !important;
+}
+// 表格补丁-用于lable过短,描述显示不完
+.table-form-horizontal {
+    table-layout: fixed;
+
+    tbody {
+        tr {
+            td:not(.tr-bg) {
+                padding-left: 120px;
+
+                label.control-label {
+                    width: 110px;
+                    margin-left: -120px;
+                }
+            }
+        }
+    }
+}
+
+@panel-sm-heading-height: 26px;
+@panel-xs-heading-height: 20px;
+
+.panel {
+    .panel-sm {
+        margin-bottom: 10px;
+
+        .panel-heading,
+        .panel-body {
+            padding: 5px;
+        }
+
+        .panel-heading.clearfix {
+            padding: 0 5px;
+            height: @panel-sm-heading-height;
+
+            .panel-title {
+                line-height: @panel-sm-heading-height;
+            }
+
+            .panel-toolbar {
+                line-height: @panel-sm-heading-height - 5;
+            }
+        }
+    }
+
+    .panel-heading {
+        .checkbox {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .panel-body {
+        .checkbox-inline + .checkbox-inline,
+        .checkbox-inline {
+            margin-left: 5px;
+        }
+    }
+
+    > .panel-toolbar.panel-toolbar-sm {
+        padding: 3px 5px;
+    }
+}
+
+// tree http://jsfiddle.net/Fh47n/
+.tree {
+    > ul > li:before,
+    > ul > li:after {
+        border: 0;
+    }
+
+    > ul {
+        padding: 5px;
+    }
+
+    li {
+        margin: 0;
+        list-style-type: none;
+        position: relative;
+        padding: 5px 5px 0 5px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            right: auto;
+            left: -20px;
+            border-left: 1px solid #ccc;
+            bottom: 50px;
+        }
+        /*ul {
+            padding-left: 20px;
+        }*/
+        &:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 25px;
+            height: 20px;
+            right: auto;
+            left: -20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .title:hover {
+            background: #c8e4f8;
+            color: #000;
+            border: 1px solid #94a0b4;
+        }
+
+        .node {
+            .title {
+                display: inline-block;
+                border: 1px solid #ccc;
+                padding: 5px 10px;
+                text-decoration: none;
+                color: #666;
+                border-radius: 1px;
+
+                &.k-state-selected {
+                    color: #ffffff;
+                    background-color: #428bca;
+                    border-color: #428bca;
+                }
+
+                &.disabled {
+                    background: #eee;
+                    border-color: #ccc;
+                }
+            }
+        }
+
+
+        &:last-child::before {
+            height: 20px;
+        }
+
+        .action-bar {
+            display: none;
+        }
+
+        .node:hover {
+            > .action-bar {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.noData {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+}

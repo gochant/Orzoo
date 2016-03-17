@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
+using IValueProvider = System.Web.Mvc.IValueProvider;
 
 namespace Orzoo.AspNet.Mvc
 {
@@ -65,7 +67,9 @@ namespace Orzoo.AspNet.Mvc
 
             var settings = new JsonSerializerSettings
             {
-                DateTimeZoneHandling = DateTimeZoneHandling.Local
+                Formatting = Formatting.Indented,
+                DateTimeZoneHandling = DateTimeZoneHandling.Local,
+                ContractResolver = new DefaultContractResolver()
             };
             var token = JToken.Parse(bodyText);
             object jsonData = null;

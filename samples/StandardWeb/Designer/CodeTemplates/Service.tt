@@ -1,0 +1,28 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ output extension="cs" encoding="utf-8" #>
+<#@ include file="Includes/Variables.ttinclude" #>
+<#
+
+var outputPath = codeConfig.ResolvePath(codeConfig.ServicePath);
+
+foreach (var parameter in container.GetControllerParameters())
+{
+#>
+namespace <#= serviceNamespace #>
+{
+	using System.Data.Entity;
+	using Orzoo.AspNet.Infrastructure;
+	using <#= entityNamespace #>;
+
+    public partial class <#= parameter.ServiceName #> : BaseService<<#= parameter.EntityName #>, <#= parameter.EntityKeyType #>>
+    {
+        public <#= parameter.ServiceName #>(DbContext context) : base(context)
+        {
+
+        }
+    }
+}
+<#
+}
+// fileManager.Process(true, outputPath);
+#>

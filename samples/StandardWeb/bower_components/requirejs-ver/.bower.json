@@ -1,0 +1,14 @@
+{
+  "name": "requirejs-ver",
+  "homepage": "https://github.com/gochant/requirejs-ver",
+  "version": "0.1.1",
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "8baffc57561cc167b557bee6bc1b5598d7aba0a2"
+  },
+  "_source": "git://github.com/gochant/requirejs-ver.git",
+  "_target": "*",
+  "_originalSource": "requirejs-ver"
+}

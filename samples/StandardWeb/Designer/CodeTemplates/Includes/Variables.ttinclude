@@ -1,0 +1,23 @@
+<#@ include file="Config.ttinclude"#>
+<#
+var inputPath = Host.ResolvePath(codeConfig.BmxRelativePath);
+var edmPath = Host.ResolvePath(codeConfig.EdmxRelativePath);
+
+var textTransform = DynamicTextTransformation.Create(this);
+var code = new CodeGenerationTools(this);
+var ef = new MetadataTools(this);
+var typeMapper = new TypeMapper(code, ef, textTransform.Errors);
+var	fileManager = TemplateFileManager.Create(this);
+var codeStringGenerator = new CodeStringGenerator(code, typeMapper, ef);
+
+var mapProfileNamespace = codeConfig.ResolveNamespace(codeConfig.MapProfilePath);
+var entityNamespace = codeConfig.ResolveNamespace(codeConfig.EntityPath);
+var dtoNamespace = codeConfig.ResolveNamespace(codeConfig.DtoPath);
+var serviceNamespace = codeConfig.ResolveNamespace(codeConfig.ServicePath);
+var controllerNamespace = codeConfig.ResolveNamespace(codeConfig.ControllerPath);
+
+var container = BusinessModelContainer.LoadFromFile<BusinessModelContainer>(inputPath);
+container.LoadEdm(edmPath);
+WriteHeader(codeStringGenerator, fileManager);
+// fileManager.StartNewFile(Path.GetFileNameWithoutExtension(Host.TemplateFile) + ".cs");
+#>

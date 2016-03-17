@@ -1,0 +1,43 @@
+<#@ template language="C#" debug="true"#>
+<#@ output extension="cs" encoding="utf-8" #>
+<#@ include file="Includes/Variables.ttinclude" #>
+<#
+
+var outputPath = codeConfig.ResolvePath(codeConfig.MapProfilePath);
+
+foreach (var parameter in container.GetMapProfileParameters())
+{ 
+#>
+namespace <#= mapProfileNamespace #>
+{
+	using Orzoo.AspNet.Infrastructure;
+	using <#= entityNamespace #>;
+	using <#= dtoNamespace #>;
+
+    public partial class <#= parameter.EntityName #>MapProfile : MapProfile
+    {
+        protected override void Configure()
+        {
+<# foreach (var name in parameter.CToVNames) { #>
+            AddMap<<#= parameter.EntityName #>, <#= name #>>()
+<#			foreach (var exp in parameter.CToVExpressions[name]) { #>
+				<#= exp #>
+<#			} #>
+				;
+<# } #>
+<# foreach (var name in parameter.VToCNames) { #>
+            AddMap<<#= name #>, <#= parameter.EntityName #>>()
+<#			foreach (var exp in parameter.VToCExpressions[name]) { #>
+				<#= exp #>
+<#			} #>
+				;
+<# } #>
+
+            base.Configure();
+        }
+    }
+}
+<#
+}
+//fileManager.Process(true, outputPath);
+#>

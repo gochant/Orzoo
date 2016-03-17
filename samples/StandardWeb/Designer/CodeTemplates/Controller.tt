@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ output extension="cs" encoding="utf-8" #>
+<#@ include file="Includes/Variables.ttinclude" #>
+<#
+var outputPath = codeConfig.ResolvePath(codeConfig.ControllerPath);
+foreach (var parameter in container.GetControllerParameters())
+{
+#>
+namespace <#= controllerNamespace #>
+{
+	using System.Data.Entity;
+	using System.Web.Mvc;
+	using Orzoo.AspNet.Mvc;
+	using <#= dtoNamespace #>;
+	using <#= entityNamespace #>;
+	using <#= serviceNamespace #>;
+
+    public partial class <#= parameter.EntitySetName #>Controller : CrudController<<#= parameter.EntityName #>, <#= parameter.EntityKeyType #>, <#= parameter.EditDtoName #>, <#= parameter.ItemDtoName #>, <#= parameter.ServiceName #>>
+    {
+        public <#= parameter.EntitySetName #>Controller(DbContext context) : base(context)
+        {
+
+        }
+    }
+}
+<#
+}
+// fileManager.Process(true, outputPath);
+#>

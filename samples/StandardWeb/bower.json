@@ -1,0 +1,14 @@
+{
+  "name":  "proj",
+  "dependencies": {
+    "veronica": "latest",
+    "veronica-ui": "latest",
+    "tinyui": "latest",
+    "font-awesome": "latest",
+    "require-css": "latest",
+    "requirejs-ver": "latest",
+    "requirejs-text": "latest",
+    "jquery.scrollbar": "latest",
+    "smalot-bootstrap-datetimepicker": "latest"
+  }
+}

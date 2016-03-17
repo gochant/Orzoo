@@ -1,0 +1,43 @@
+{
+  "name": "veronica-ui",
+  "description": "",
+  "homepage": "",
+  "version": "0.1.3",
+  "main": [
+    "lib/veronica-ui.js"
+  ],
+  "ignore": [
+    "demo",
+    "assets",
+    "tools"
+  ],
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/gochant/veronica-ui.git"
+  },
+  "dependencies": {
+    "jquery": "~1.11.x"
+  },
+  "devDependencies": {
+    "kendo-ui-core": "latest",
+    "requirejs": "latest",
+    "require-css": "latest",
+    "requirejs-text": "latest",
+    "almond": "latest",
+    "smalot-bootstrap-datetimepicker": "latest",
+    "form2js": "latest",
+    "jquery.inputmask": "latest",
+    "jquery-form": "latest",
+    "jquery-validation": "latest",
+    "jquery-validation-unobtrusive": "latest",
+    "jquery-placeholder": "latest",
+    "noty": "latest",
+    "table-to-json": "latest",
+    "jstree-bootstrap-theme": "latest",
+    "kendo-ui": "latest",
+    "jquery-validation-bootstrap-tooltip": "latest",
+    "tinyui": "latest",
+    "veronica": "latest",
+    "font-awesome": "latest"
+  }
+}
