@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using Orzoo.Core.Utility;
 using Orzoo.Office.Utility;
 
 namespace Orzoo.Office

@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\System.Web.Mvc.fakes" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

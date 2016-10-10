@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardWeb", "samples\Stan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orzoo.AspNet.Tests", "test\Orzoo.AspNet.Tests\Orzoo.AspNet.Tests.csproj", "{F049C061-1007-45C1-A99C-0D1C7F27DD77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "samples\Demo\Demo.csproj", "{858B0BA0-770F-4283-89E8-0C948554822A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{F049C061-1007-45C1-A99C-0D1C7F27DD77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F049C061-1007-45C1-A99C-0D1C7F27DD77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F049C061-1007-45C1-A99C-0D1C7F27DD77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858B0BA0-770F-4283-89E8-0C948554822A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858B0BA0-770F-4283-89E8-0C948554822A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858B0BA0-770F-4283-89E8-0C948554822A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858B0BA0-770F-4283-89E8-0C948554822A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +75,6 @@ Global
 		{A6EE5B40-1957-4264-9B84-082145E100E9} = {0F752849-04CB-44C4-A7BB-2D48664B3770}
 		{01C6CEA6-7AEC-4489-B697-636C13AFA0ED} = {6615FC89-11FA-4E5B-A8C2-0367DBEDBCB2}
 		{F049C061-1007-45C1-A99C-0D1C7F27DD77} = {0F752849-04CB-44C4-A7BB-2D48664B3770}
+		{858B0BA0-770F-4283-89E8-0C948554822A} = {6615FC89-11FA-4E5B-A8C2-0367DBEDBCB2}
 	EndGlobalSection
 EndGlobal
